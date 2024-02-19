@@ -106,7 +106,6 @@ def search_in_file(term):
     +4    Sn4+    Stagno (IV)    Ione stannico "
     """
 
-    # Dividi il contenuto del file in righe
     lines = file_content.split('\n')
 
     matching_lines = []
@@ -114,14 +113,12 @@ def search_in_file(term):
         if term.lower() in line.lower():
             matching_lines.append(line.strip())
     
-    if matching_lines:
-        return matching_lines
-    else:
-        return ["No results"]
+    return matching_lines if matching_lines else ["No results"]
 
-# Esempio di utilizzo
-search_term = input("Inserisci il termine da cercare nel file: ")
-
-result = search_in_file(search_term)
-for line in result:
-    print(line)
+# Loop per continuare a fare ricerche
+while True:
+    search_term = input("Input ricerca: ")
+    
+    result = search_in_file(search_term)
+    for line in result:
+        print(line)
