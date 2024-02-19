@@ -1,109 +1,285 @@
 def search_in_file(term):
     file_content = """
-    "FeCl2    Dicloruro di ferro    Cloruro ferroso
-    FeCl3    Tricloruro di ferro    Cloruro ferrico
-    CO    Ossido di carbonio    Ossido di carbonio
-    CO2    Diossido di carbonio    Anidride carbonica
-    P2O3    Triossido di di fosforo    Anidride fosforosa
-    P2O5    Pentossido di di fosforo    Anidride fosforica
-    N2O    ossido di di azoto    Protossido di azoto
-    NO    Ossido di azoto    Ossido di azoto
-    N2O3    Triossido di di azoto    Anidride nitrosa
-    NO2    Diossido di azoto    Ipoazotide
-    N2O5    Pentossido di di azoto    Anidride nitrica
-    HCl    Cloruro di idrogeno    Acido cloridrico
-    Hg2Cl2    Dicloruro di di mercurio    Calomelano
-    H2S    Solfuro di di idrogeno    Acido solfidrico
-    H2O    Ossido di idrogeno    Acqua
-    H2O2    Perossido di idrogeno    Acqua ossigenata
-    PH3    Triidruro di fosforo    Fosfina
-    MoO4    Tetrossido di molibdeno    Tetrossido di molibdeno
-    OF2    Fluoruro di idrogeno    Fluoruro di idrogeno
-    +1    Li2O    Ossido di dilitio    Ossido di litio
-    +1    Na2O    Ossido di disodio    Ossido di sodio
-    +2    MgO    Ossido di magnesio    Ossido di magnesio
-    +2    CaO    Ossido di calcio    Ossido di calcio
-    +2    CrO    Ossido di cromo    Ossido cromoso
-    +3    Cr2O3    Triossido di dicromo    Ossido cromico
-    +2    MnO    Ossido di manganese    Ossido manganoso
-    +3    Mn2O3    Triossido di dimanganese    Ossido manganico
-    +2    SnO    Monossido di stagno    Ossido stannoso
-    +3    Tl2O3    Triossido di ditallio    Ossido di tallio 
-    +3    B2O3    triossido di diboro    Anidride borica
-    +2    CO    Monossido di carbonio    Ossido di carbonio
-    +4    CO2    Diossido di carbonio    Anidride carbonica
-    +1    N2O    Ossido di diazoto    Protossido di azoto
-    +2    NO    Monossido di azoto    Ossido di azoto
-    +3    N2O3    Triossido di diazoto    Anidride nitrosa
-    +4    NO2    Diossido di azoto    Anidride nitroso/nitrica
-    +4    N2O4    Tetraossido di diazoto    Ipoazotide
-    +5    N2O5    Pentaossido di diazoto    Anidride nitrica
-    +3    P4O6    Esaossido di tetrafosforo    Anidride fosforosa
-    +5    P4O10    Decaossido di tetrafosforo    Anidride fosforica
-    +4    SO2    Diossido di zolfo    Anidride solforosa
-    +6    SO3    Triossido di zolfo    Anidride solforica
-    +1    Cl2O    Ossido di dicloro    Anidride ipoclorosa
-    +3    Cl2O3    Triossido di dicloro    Anidride clorosa
-    +5    Cl2O5    Pentaossido di dicloro    Anidride clorica
-    +7    Cl2O7    Eptaossido di dicloro    Anidride perclorica
-    +6    CrO3    Triossido di cromo    Anidride cromica
-    +7    Mn2O7    Eptaossido di dimanganese    Anidride permanganica 
-    +2    ZnO    Ossido di zinco    Ossido di zinco
-    +4    SnO2    Diossido di stagno    Ossido stannico
-    +3    Al2O3    Triossido di dialluminio    Allumina
-    +3    Cr2O3    Triossido di dicromo    Ossido cromico
-    +3    Mn2O3    Triossido di dimanganese    Ossido manganico
-    HF    Fluoruro di idrogeno    Acido fluoridrico
-    HCl    Cloruro di idrogeno    Acido cloridrico
-    HBr    Bromuro di idrogeno    Acido bromidrico
-    HI    Ioduro di idrogeno    Acido iodidrico
-    H2S    Solfuro di diidrogeno    Acido solfidrico
-    H2Se    Seleniuro di diidrogeno    Acido selenidrico
-    HCN    Cianuro di idrogeno    Acido cianidrico 
-    +3    B2O3    H3BO3    Acido triossoborico    Acido ortoborico    BO33- ortoborato
-    +3    B2O3    HBO2    Acido diossoborico    Acido metaborico    BO2- metaborato
-    +4    CO2    H2CO3    Acido triossocarbonico    Acido carbonico    CO32- carbonato
-    +4    SiO2    H4SiO4    Acido tetraossosilicico    Acido ortosilicico    SiO44- ortosilicato
-    +3    N2O3    HNO2    Acido diossonitrico    Acido nitroso    NO2- nitrito
-    +5    N2O5    HNO3    Acido triossonitrico    Acido nitrico    NO3- nitrato
-    +5    P2O5    H3PO4    Acido tetraossofosforico    Acido ortofosforico    PO43- ortofosfato
-    +5    P2O5    H4P2O7    Acido eptaossodifosforico    Acido pirofosforico    H2P2O72- pirofosfato diacido
-    +5    P2O5    HPO3    Acido triossofosforico    Acido metafosforico    PO3- metafosfato
-    +4    SO2    H2SO3    Acido triossosolforico    Acido solforoso    SO32- solfito
-    +6    SO3    H2SO4    Acido tetraossosolforico    Acido solforico    SO42- solfato
-    +1    Cl2O    HClO    Acido monossoclorico    Acido ipocloroso    ClO- ipoclorito
-    +3    Cl2O3    HClO2    Acido diossoclorico    Acido cloroso    ClO2- clorito
-    +5    Cl2O5    HClO3    Acido triossoclorico    Acido clorico    ClO3- clorato
-    +7    Cl2O7    HClO4    Acido tetraossoclorico    Acido perclorico    ClO4- perclorato
-    HCl acido cloridrico    CaCl2    Dicloruro di calcio    Cloruro di calcio
-    HNO2 acido nitroso    Al(NO2)3    Triossidonitrato di alluminio    Nitrito di alluminio
-    H2SO4 acido solforico    Sn(SO4)2    Ditetraossosolfato di stagno    Solfato stannico
-    H3PO4 acido fosforico    Sn3(PO4)2    Ditetraossofosfato di stagno    Ortosolfato stannoso
-    HClO acido ipocloroso    NaClO    Monossoclorato di sodio    Ipoclorito sodico
-    HClO2 acido cloroso    LiClO2    Diossoclorato di litio    Clorito di litio
-    HClO3 acido clorico    NaClO3    Triossoclorato di sodio    Clorato di sodio
-    HNO3 acido nitrico    Pb(NO3)2    Ditriossonitrato di piombo    Nitrato piomboso
-    H2SO3 acido solforoso    Cu2SO3    Triossosolfato di rame    Solfito rameoso
-    HClO4 acido perclorico    Ba(ClO4)2    Ditetraossoclorato di bario    Perclorato di bario
-    H2CO3 acido carbonico    Fe2(CO3)3    Tritriossocarbonato di ferro    Carbonato ferrico
-    H2S acido solfidrico    ZnS    Solfuro di zinco    Solfuro di zinco
-    NaHCO3    Idrogenocarbonato di sodio    Bicarbonato di sodio
-    KHSO3    Idrogenosolfito di potassio    Bisolfito di potassio
-    KHSO4    Idrogenosolfato di potassio    Bisolfato di potassio
-    Na2PO3    Idrogenofosfito di sodio    Fosfito monosodico
-    Na2PO4    Diidrogenofosfato di sodio    Fosfato diacido di sodio
-    K2HPO4    Idrogenofosfato di potassio    Fosfato monoacido di potassio 
-    MgF(OH)    Idrossofluoruro di magnesio    Fluoruro monobasico di magnesio
-    FeCl(OH)2    Diidrossocloruro di ferro    Cloruro dibasico di ferro 
-    -3    N3-    Nitruro    Ione azoturo
-    -2    S2-    Solfuro    Ione solfuro
-    -1    Cl-    Cloruro    Ione cloruro
-    +1    Na+    Sodio    Ione sodio
-    +2    Sn2+    Stagno (II)    Ione stannoso
-    +2    Fe2+    Ferro (II)    Ione ferroso
-    +3    Fe3+    Ferro (III)    Ione ferrico
-    +3    Al3+    Alluminio    Ione alluminio
-    +4    Sn4+    Stagno (IV)    Ione stannico "
+    "	H2O	Acqua	Ossido di idrogeno		
+	CO2	Anidride carbonica	Ossido di carbonio (IV)		
+	NaCl	Sale comune	Cloruro di sodio		
+	H2SO4	Acido solforico	Acido ossosolforico		
+	NH3	Ammoniaca	Tri idruro di azoto		
+	CaCO3	Calcite	Carbonato di calcio		
+	CH4	Metano	Metano		
+	HCl	Acido cloridrico	Cloruro di idrogeno		
+	NaOH	Soda caustica	Idrossido di sodio		
+	Fe2O3	Ematite	Ossido di ferro (III)		
+	KCl	Cloruro di potassio	Cloruro di potassio		
+	HNO3	Acido nitrico	Acido ossonitrico		
+	Mg(OH)2	Idrossido di magnesio	Idrossido di magnesio		
+	H2S	Idrogeno solforato	Solfo idruro di idrogeno		
+	CO	Monossido di carbonio	Ossido di carbonio (II)		
+	Na2CO3	Carbonato di sodio	Carbonato di sodio		
+	CuSO4	Solfato di rame (II)	Solfato di rame (II)		
+	H2O2	Perossido di idrogeno	Idrogeno perossido		
+	Na2SO4	Solfato di sodio	Solfato di sodio		
+	Ba(OH)2	Idrossido di bario	Idrossido di bario		
+	CO3	Carbonato	Carbonato		
+	SiO2	Biossido di silicio	Ossido di silicio (IV)		
+	CaCl2	Cloruro di calcio	Cloruro di calcio		
+	Na2O	Ossido di sodio	Ossido di sodio		
+	SO2	Anidride solforosa	Ossido di zolfo (IV)		
+	Al2O3	Allumina	Ossido di alluminio		
+	CuO	Ossido di rame (II)	Ossido di rame (II)		
+	H2	Idrogeno	Di idruro di idrogeno		
+	NaH	Idruro di sodio	Tri idruro di sodio		
+	MgCl2	Cloruro di magnesio	Cloruro di magnesio		
+	H2SO3	Acido solforoso	Acido ossosolforoso		
+	NH4OH	Ammoniaca liquida	Idrossido di ammonio		
+	FeCl3	Cloruro ferrico	Cloruro di ferro (III)		
+	NaNO3	Nitrato di sodio	Nitrato di sodio		
+	BaCl2	Cloruro di bario	Cloruro di bario		
+	Na2S	Solfuro di sodio	Solfuro di sodio		
+	H3PO4	Acido fosforico	Acido ossofosforico		
+	H2CO3	Acido carbonico	Acido ossocarbonico		
+	NaHCO3	Bicarbonato di sodio	Idrogenocarbonato di sodio		
+	K2CO3	Carbonato di potassio	Carbonato di potassio		
+	Pb(NO3)2	Nitrato di piombo (II)	Nitrato di piombo (II)		
+	HBr	Acido bromidrico	Bromuro di idrogeno		
+	NaF	Fluoruro di sodio	Fluoruro di sodio		
+	NaClO	Iperclorito di sodio	Iperclorito di sodio		
+	FeS	Solfuro ferroso	Solfuro di ferro (II)		
+	NaHSO4	Solfato idrogenato di sodio	Solfato di idrogeno di sodio		
+	Al(OH)3	Idrossido di alluminio	Idrossido di alluminio (III)		
+	Na2S2O3	Tiosolfato di sodio	Tiosolfato di sodio		
+	KClO3	Clorato di potassio	Clorato di potassio		
+	ZnSO4	Solfato di zinco	Solfato di zinco		
+	Fe(NO3)3	Nitrato ferrico	Nitrato di ferro (III)		
+	H2Se	Seleniuro di idrogeno	Solfo idruro di idrogeno (II)		
+	Na2CO2	Sesquicarbonato di sodio	Carbonato di sodio (II)		
+	MgO	Ossido di magnesio	Ossido di magnesio		
+	Ca(OH)2	Calce spenta	Idrossido di calcio		
+	K2SO4	Solfato di potassio	Solfato di potassio		
+	HgO	Ossido di mercurio (II)	Ossido di mercurio (II)		
+	NaH2PO4	Fosfato acido di sodio	Fosfato di idrogeno di sodio		
+	Na2CrO4	Cromato di sodio	Cromato di sodio		
+	Na2O2	Perossido di sodio	Idrogeno perossido di sodio		
+	HgCl2	Cloruro di mercurio (II)	Cloruro di mercurio (II)		
+	BaSO4	Solfato di bario	Solfato di bario		
+	Na2SO3	Solfito di sodio	Solfito di sodio		
+	ZnCl2	Cloruro di zinco	Cloruro di zinco		
+	Fe(OH)3	Idrossido ferrico	Idrossido di ferro (III)		
+	Na2Cr2O7	Dicromato di sodio	Dicromato di sodio		
+	CaSO4	Gesso	Solfato di calcio		
+	K2S	Solfuro di potassio	Solfuro di potassio		
+	H2Te	Teluriuro di idrogeno	Solfo idruro di idrogeno (II)		
+	Na3PO4	Fosfato trisodico	Fosfato di sodio		
+	Mg(NO3)2	Nitrato di magnesio	Nitrato di magnesio		
+	Ca(NO3)2	Nitrato di calcio	Nitrato di calcio		
+	KNO3	Nitrato di potassio	Nitrato di potassio		
+	MgSO4	Solfato di magnesio	Solfato di magnesio		
+	FeCl2	Cloruro ferroso	Cloruro di ferro (II)		
+	Na2HPO4	Fosfato disodico	Fosfato di idrogeno di sodio		
+	Al2(SO4)3	Solfato di alluminio	Solfato di alluminio		
+	NH4Cl	Cloruro ammonico	Cloruro di ammonio		
+	NaClO3	Clorato di sodio	Clorato di sodio		
+	K2Cr2O7	Dicromato di potassio	Dicromato di potassio		
+	CuCl2	Cloruro di rame (II)	Cloruro di rame (II)		
+	NaHCO2	Idrogenocarbonato di sodio	Carbonato di sodio (II)		
+	Ca3(PO4)2	Fosfato tricalcico	Fosfato di calcio (II)		
+	KMnO4	Permanganato di potassio	Permanganato di potassio		
+	ZnO	Ossido di zinco	Ossido di zinco		
+	H2S2	Solfo idruro di idrogeno	Solfo idruro di idrogeno (II)		
+	Na2SO5	Ipersolfito di sodio	Ipersolfito di sodio		
+	AlPO4	Fosfato di alluminio	Fosfato di alluminio		
+	NaH2PO3	Fosfato di sodio	Fosfato di idrogeno di sodio		
+	FeS2	Pirite	Solfuro di ferro (II)		
+	NH4NO3	Nitrato ammonico	Nitrato di ammonio		
+	K2S2O3	Tiosolfato di potassio	Tiosolfato di potassio		
+	Ca(OCl)2	Iperclorito di calcio	Iperclorito di calcio		
+	HClO4	Acido clorico	Acido ossoclorico		
+	Na2SiO3	Silicato di sodio	Silicato di sodio		
+	Ba(NO3)2	Nitrato di bario	Nitrato di bario		
+	Mg(HCO3)2	Idrogenocarbonato di magnesio	Carbonato di magnesio (II)		
+	NaBr	Bromuro di sodio	Bromuro di sodio		
+	KHSO4	Solfato acido di potassio	Solfato di idrogeno di potassio		
+	Zn(OH)2	Idrossido di zinco	Idrossido di zinco		
+	FePO4	Fosfato ferrico	Fosfato di ferro (III)		
+	NaHS	Solfito di sodio	Solfito di sodio		
+	Cu(NO3)2	Nitrato di rame (II)	Nitrato di rame (II)		
+	NaHSO3	Solfato idrogenato di sodio	Solfato di idrogeno di sodio		
+	AlCl3	Cloruro di alluminio	Cloruro di alluminio		
+	Na2B4O7	Borato di sodio	Tetraborato di disodio		
+	KBr	Bromuro di potassio	Bromuro di potassio		
+	H3BO3	Acido borico	Acido ossoborico		
+	KHS	Solfito di potassio	Solfito di potassio		
+	NaH2AsO4	Arseniato acido di sodio	Arseniato di idrogeno di sodio		
+	Ca(H2PO4)2	Difosfato di calcio	Fosfato di idrogeno di calcio		
+	H2CrO4	Acido cromico	Acido ossocromico		
+	Na2C2O4	Ossalato di sodio	Ossalato di sodio		
+	K2HPO4	Fosfato di potassio	Fosfato di idrogeno di potassio		
+	Ca3(PO3)2	Fosfito tricalcico	Fosfito di calcio (II)		
+	H3AsO4	Acido arsenico	Acido ossoarsenico		
+	Na2SO2	Solfuro di sodio	Solfuro di sodio		
+	K2S2O4	Iposolfito di potassio	Iposolfito di potassio		
+	Mg(HSO4)2	Solfato acido di magnesio	Solfato di idrogeno di magnesio		
+	NaH2PO2	Fosfato di sodio	Fosfato di idrogeno di sodio		
+	Ca(HCO3)2	Idrogenocarbonato di calcio	Carbonato di calcio (II)		
+	HNO2	Acido nitroso	Acido ossonitroso		
+	NaBH4	Boroidruro di sodio	Idruro di sodio		
+	KHSO3	Solfato idrogenato di potassio	Solfato di idrogeno di potassio		
+	NaH2PO4	Fosfato di sodio	Fosfato di idrogeno di sodio		
+	H3PO3	Acido fosforoso	Acido ossofosforoso		
+	K2SiO3	Silicato di potassio	Silicato di potassio		
+	Ca3(PO4)2	Fosfato tricalcico	Fosfato di calcio (II)		
+	NH4HSO4	Solfato acido di ammonio	Solfato di idrogeno di ammonio		
+	Al(OH)3	Idrossido di alluminio	Idrossido di alluminio (III)		
+	Na2S2O3	Tiosolfato di sodio	Tiosolfato di sodio		
+	KClO3	Clorato di potassio	Clorato di potassio		
+	ZnSO4	Solfato di zinco	Solfato di zinco		
+	Fe(NO3)3	Nitrato ferrico	Nitrato di ferro (III)		
+	H2Se	Seleniuro di idrogeno	Solfo idruro di idrogeno (II)		
+	Na2CO2	Sesquicarbonato di sodio	Carbonato di sodio (II)		
+	MgO	Ossido di magnesio	Ossido di magnesio		
+	Ca(OH)2	Calce spenta	Idrossido di calcio		
+	K2SO4	Solfato di potassio	Solfato di potassio		
+	HgO	Ossido di mercurio (II)	Ossido di mercurio (II)		
+	NaH2PO4	Fosfato acido di sodio	Fosfato di idrogeno di sodio		
+	Na2CrO4	Cromato di sodio	Cromato di sodio		
+	Na2O2	Perossido di sodio	Idrogeno perossido di sodio		
+	HgCl2	Cloruro di mercurio (II)	Cloruro di mercurio (II)		
+	BaSO4	Solfato di bario	Solfato di bario		
+	Na2SO3	Solfito di sodio	Solfito di sodio		
+	ZnCl2	Cloruro di zinco	Cloruro di zinco		
+	Fe(OH)3	Idrossido ferrico	Idrossido di ferro (III)		
+	Na2Cr2O7	Dicromato di sodio	Dicromato di sodio		
+	CaSO4	Gesso	Solfato di calcio		
+	K2S	Solfuro di potassio	Solfuro di potassio		
+	H2Te	Teluriuro di idrogeno	Solfo idruro di idrogeno (II)		
+	Na3PO4	Fosfato trisodico	Fosfato di sodio		
+	Mg(NO3)2	Nitrato di magnesio	Nitrato di magnesio		
+	Ca(NO3)2	Nitrato di calcio	Nitrato di calcio		
+	KNO3	Nitrato di potassio	Nitrato di potassio		
+	MgSO4	Solfato di magnesio	Solfato di magnesio		
+	FeCl2	Cloruro ferroso	Cloruro di ferro (II)		
+	Na2HPO4	Fosfato disodico	Fosfato di idrogeno di sodio		
+	Al2(SO4)3	Solfato di alluminio	Solfato di alluminio		
+	NH4Cl	Cloruro ammonico	Cloruro di ammonio		
+	NaClO3	Clorato di sodio	Clorato di sodio		
+	K2Cr2O7	Dicromato di potassio	Dicromato di potassio		
+	CuCl2	Cloruro di rame (II)	Cloruro di rame (II)		
+	NaHCO2	Idrogenocarbonato di sodio	Carbonato di sodio (II)		
+	Ca3(PO4)2	Fosfato tricalcico	Fosfato di calcio (II)		
+	KMnO4	Permanganato di potassio	Permanganato di potassio		
+	ZnO	Ossido di zinco	Ossido di zinco		
+	H2S2	Solfo idruro di idrogeno	Solfo idruro di idrogeno (II)		
+	Na2SO5	Ipersolfito di sodio	Ipersolfito di sodio		
+	AlPO4	Fosfato di alluminio	Fosfato di alluminio		
+	NaH2PO3	Fosfato di sodio	Fosfato di idrogeno di sodio		
+	FeS2	Pirite	Solfuro di ferro (II)		
+	NH4NO3	Nitrato ammonico	Nitrato di ammonio		
+	K2S2O3	Tiosolfato di potassio	Tiosolfato di potassio		
+	Ca(OCl)2	Iperclorito di calcio	Iperclorito di calcio		
+	HClO4	Acido clorico	Acido ossoclorico		
+	Na2SiO3	Silicato di sodio	Silicato di sodio		
+	Ba(NO3)2	Nitrato di bario	Nitrato di bario		
+	Mg(HCO3)2	Idrogenocarbonato di magnesio	Carbonato di magnesio (II)		
+	NaBr	Bromuro di sodio	Bromuro di sodio		
+	KHSO4	Solfato acido di potassio	Solfato di idrogeno di potassio		
+	Zn(OH)2	Idrossido di zinco	Idrossido di zinco		
+	FePO4	Fosfato ferrico	Fosfato di ferro (III)		
+	NaHS	Solfito di sodio	Solfito di sodio		
+	Cu(NO3)2	Nitrato di rame (II)	Nitrato di rame (II)		
+	NaHSO3	Solfato idrogenato di sodio	Solfato di idrogeno di sodio		
+	AlCl3	Cloruro di alluminio	Cloruro di alluminio		
+	Na2B4O7	Borato di sodio	Tetraborato di disodio		
+	KBr	Bromuro di potassio	Bromuro di potassio		
+	H3BO3	Acido borico	Acido ossoborico		
+	KHS	Solfito di potassio	Solfito di potassio		
+	NaH2AsO4	Arseniato acido di sodio	Arseniato di idrogeno di sodio		
+	Ca(H2PO4)2	Difosfato di calcio	Fosfato di idrogeno di calcio		
+	H2CrO4	Acido cromico	Acido ossocromico		
+	Na2C2O4	Ossalato di sodio	Ossalato di sodio		
+	K2HPO4	Fosfato di potassio	Fosfato di idrogeno di potassio		
+	Ca3(PO3)2	Fosfito tricalcico	Fosfito di calcio (II)		
+	H3AsO4	Acido arsenico	Acido ossoarsenico		
+	Na2SO2	Solfuro di sodio	Solfuro di sodio		
+	K2S2O4	Iposolfito di potassio	Iposolfito di potassio		
+	Mg(HSO4)2	Solfato acido di magnesio	Solfato di idrogeno di magnesio		
+	NaH2PO2	Fosfato di sodio	Fosfato di idrogeno di sodio		
+	Ca(HCO3)2	Idrogenocarbonato di calcio	Carbonato di calcio (II)		
+	HNO2	Acido nitroso	Acido ossonitroso		
+	NaBH4	Boroidruro di sodio	Idruro di sodio		
+	KHSO3	Solfato idrogenato di potassio	Solfato di idrogeno di potassio		
+	NaH2PO4	Fosfato di sodio	Fosfato di idrogeno di sodio		
+	H3PO3	Acido fosforoso	Acido ossofosforoso		
+	K2SiO3	Silicato di potassio	Silicato di potassio		
+1	Li2O	Ossido di litio	Ossido di dilitio		
+1	Na2O	Ossido di sodio	Ossido di disodio		
+2	MgO	Ossido di magnesio	Ossido di magnesio		
+2	CaO	Ossido di calcio	Ossido di calcio		
+2	CrO	Ossido cromoso	Ossido di cromo		
+3	Cr2O3	Ossido cromico	Triossido di dicromo		
+2	MnO	Ossido manganoso	Ossido di manganese		
+3	Mn2O3	Ossido manganico	Triossido di dimanganese		
+2	SnO	Ossido stannoso	Monossido di stagno		
+3	Tl2O3	Ossido di tallio	Triossido di ditallio		
+3	B2O3	Anidride borica	Triossido di diboro		
+2	CO	Ossido di carbonio	Monossido di carbonio		
+4	CO2	Anidride carbonica	Diossido di carbonio		
+1	N2O	Protossido di azoto	Ossido di diazoto		
+2	NO	Ossido di azoto	Monossido di azoto		
+3	N2O3	Anidride nitrosa	Triossido di diazoto		
+4	NO2	Anidride nitroso	Diossido di azoto		
+5	N2O5	Anidride nitrica	Pentaossido di diazoto		
+3	P2O3	Anidride fosforosa	Triossido di di fosforo		
+5	P2O5	Anidride fosforica	Pentossido di di fosforo		
+4	SO2	Anidride solforosa	Diossido di zolfo		
+6	SO3	Anidride solforica	Triossido di zolfo		
+1	Cl2O	Anidride ipoclorosa	Ossido di dicloro		
+3	Cl2O3	Anidride clorosa	Triossido di dicloro		
+5	Cl2O5	Anidride clorica	Pentaossido di dicloro		
+7	Cl2O7	Anidride perclorica	Eptaossido di dicloro		
+6	CrO3	Anidride cromica	Triossido di cromo		
+7	Mn2O7	Anidride permanganica	Eptaossido di dimanganese		
+2	ZnO	Ossido di zinco	Ossido di zinco		
+4	SnO2	Ossido stannico	Diossido di stagno		
+3	Al2O3	Allumina	Triossido di dialluminio		
+3	Cr2O3	Ossido cromico	Triossido di dicromo		
+3	Mn2O3	Ossido manganico	Triossido di dimanganese		
+-1	Cl-	Ione cloruro	Cloruro		
+1	Na+	Ione sodio	Sodio		
+2	Sn2+	Ione stannoso	Stagno (II)		
+2	Fe2+	Ione ferroso	Ferro (II)		
+3	Fe3+	Ione ferrico	Ferro (III)		
+3	Al3+	Ione alluminio	Alluminio		
+4	Sn4+	Ione stannico	Stagno (IV)		
+-3	N3-	Ione azoturo	Nitruro		
+-2	S2-	Ione solfuro	Solfuro		
+2	Sn(SO4)2	Solfato stannico	Ditetraossosolfato di stagno		
+-1	OH-	Ione idrossido	Idrossido		
+-1	CO3^2-	Ione carbonato	Carbonato		
+-1	HCO3^-	Ione bicarbonato	Bicarbonato		
+-2	SO4^2-	Ione solfato	Solfato		
+-2	HSO4^-	Ione idrogenosolfato	Idrogenosolfato		
+-1	ClO^-	Ione ipoclorito	Ipoclorito		
+-1	ClO2^-	Ione clorito	Clorito		
+-1	ClO3^-	Ione clorato	Clorato		
+-1	ClO4^-	Ione perclorato	Perclorato		
+-1	NO2^-	Ione nitrito	Nitrito		
+-1	NO3^-	Ione nitrato	Nitrato		
+-1	PO3^3-	Ione fosfito	Fosfito		
+-1	PO4^3-	Ione fosfato	Fosfato		
+-1	HPO4^2-	Ione idrogenofosfato	Idrogenofosfato		
+-1	H2PO4^-	Ione diidrogenofosfato	Dihidrogenofosfato		
+-1	BO2^-	Ione metaborato	Metaborato		
+-1	BO3^-	Ione ortoborato	Orto-borato		
+-1	H2BO3^-	Ione diidrogenometaborato	Acido metaborico		
+-1	H3BO3	Ione triborato	Acido borico		
+-2	SiO3^2-	Ione meta-silicato	Meta-silicato		
+-2	SiO4^4-	Ione orto-silicato	Orto-silicato		
+-2	H2SiO3^-	Ione diidrogenometasilicato	Meta-silicato acido		
+-2	H4SiO4	Ione tetra-silicato	Acido ortosilicico		
+-2	OH-	Ione idrato	Idrato		
+-2	H2O2	Ione perossido	Perossido		
+-3	OH-	Ione idrossido	Idrossido		
+-3	H3O+	Ione idronio	Ione idronio"
     """
 
     lines = file_content.split('\n')
@@ -115,9 +291,12 @@ def search_in_file(term):
     
     return matching_lines if matching_lines else ["No results"]
 
-# Loop per continuare a fare ricerche
+# Loop
 while True:
     search_term = input("Input ricerca: ")
+    
+    if search_term.lower() == "e":
+        break
     
     result = search_in_file(search_term)
     for line in result:
