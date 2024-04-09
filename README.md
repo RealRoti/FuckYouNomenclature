@@ -1,12 +1,14 @@
 # FuckYouNomenclature
-Nomenclature database search tool on your calculator [ITA&amp;ENG SUPPORTED]
+Nomenclature database search tool on your python-supported calculator [ITA&amp;ENG SUPPORTED]
 
 ### How to use
-Basically
+Basically, you need a calculator that supports Python scripts. Then:
 
 🇮🇹 Se sei italiano, scarica e utilizza "IT-search.py"
 
 🇬🇧 If you're english, download and use "EN-search.py"
+
+
 - upload the script on your calculator
 - run code
 - write the name of the chemical compound/ion you are searching for **(not cap-sensitive)**
