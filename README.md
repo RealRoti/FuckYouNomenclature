@@ -12,7 +12,7 @@ Basically, you need a calculator that supports Python scripts. Then:
 - upload the script on your calculator
 - run code
 - write the name of the chemical compound/ion you are searching for **(not cap-sensitive)**
-- here you are!
+- IMPORTANT: in order to read the entire line found, digit "e" so you'll exit shell.
   
 Note: in the chemical dataset used here, there are the principal chemical compounds/ions (about 85) that are tipically asked in high school tests or homeworks. If you teacher uses specific compounds that are not mentioned, feel free to add them manually editing the code.
 
